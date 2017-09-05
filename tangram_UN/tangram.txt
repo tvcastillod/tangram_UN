@@ -1,0 +1,72 @@
+float txC;
+float tyC;
+float rC;
+color colorC;
+float txT;
+float tyT;
+float rT;
+color colorT;
+float txP;
+float tyP;
+float rP;
+color colorP;
+
+void setup() {
+  size(500, 500);
+  txC=int(random(50, 150));
+  tyC=int(random(50, 150)); 
+  txT=int(random(50, 150));
+  tyT=int(random(50, 150)); 
+  txP=int(random(50, 150));
+  tyP=int(random(50, 150));
+  colorC=color( random(128, 255), random(128, 255), random(128, 255));
+  colorT=color( random(128, 255), random(128, 255), random(128, 255));
+  colorP=color( random(128, 255), random(128, 255), random(128, 255));
+}
+
+
+void draw() {
+  background(0);
+  pushMatrix();
+  translate(txC, tyC);
+  rotate(rC*radians(45));
+  fill(colorC);
+  scale(2.0);
+  rect(-16,-16,32,32);
+  popMatrix();
+  pushMatrix();
+  translate(txT, tyT);
+  rotate(rT*radians(45));
+  fill(colorT);
+  scale(2.0);
+  triangle(-16, 0, 16, 32, 16, -32);
+  popMatrix();
+  pushMatrix();
+  translate(txP, tyP);
+  rotate(rP*radians(45));
+  fill(colorP);
+  scale(2.0);
+  beginShape();
+  vertex(-16, 0);
+  vertex(-16, -32);
+  vertex(16, 0);
+  vertex(16, 32);  
+  endShape();
+  popMatrix();
+}
+
+void mouseClicked() {
+  if (mouseButton == RIGHT) {
+    color mouseC = get (mouseX, mouseY);
+    if (colorC == mouseC) { 
+      rC= (rC+1);
+    }
+    if (colorT == mouseC) { 
+      rT= (rT+1);
+    }
+    if (colorP == mouseC) { 
+      rP= (rP+1);
+    }
+  }
+}
+
