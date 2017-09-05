@@ -1,72 +1,66 @@
-float txC;
-float tyC;
-float rC;
-color colorC;
-float txT;
-float tyT;
-float rT;
-color colorT;
-float txP;
-float tyP;
-float rP;
-color colorP;
+int[] tx = new int[7];
+int[] ty = new int[7];
+int[] r = new int[7];
+color[] colorF = new color[7];
+int i;
 
 void setup() {
-  size(500, 500);
-  txC=int(random(50, 150));
-  tyC=int(random(50, 150)); 
-  txT=int(random(50, 150));
-  tyT=int(random(50, 150)); 
-  txP=int(random(50, 150));
-  tyP=int(random(50, 150));
-  colorC=color( random(128, 255), random(128, 255), random(128, 255));
-  colorT=color( random(128, 255), random(128, 255), random(128, 255));
-  colorP=color( random(128, 255), random(128, 255), random(128, 255));
+  size(600, 600);
+  for (i=0; i<7; i++) {
+    tx[i] = int(random(100, 400));
+    ty[i] = int(random(100, 400));
+    colorF[i] = color( random(128, 255), random(128, 255), random(128, 255));
+  }
 }
-
 
 void draw() {
   background(0);
-  pushMatrix();
-  translate(txC, tyC);
-  rotate(rC*radians(45));
-  fill(colorC);
-  scale(2.0);
-  rect(-16,-16,32,32);
-  popMatrix();
-  pushMatrix();
-  translate(txT, tyT);
-  rotate(rT*radians(45));
-  fill(colorT);
-  scale(2.0);
-  triangle(-16, 0, 16, 32, 16, -32);
-  popMatrix();
-  pushMatrix();
-  translate(txP, tyP);
-  rotate(rP*radians(45));
-  fill(colorP);
-  scale(2.0);
-  beginShape();
-  vertex(-16, 0);
-  vertex(-16, -32);
-  vertex(16, 0);
-  vertex(16, 32);  
-  endShape();
-  popMatrix();
+  noStroke();
+  for (i=0; i<7; i++) {
+    pushMatrix(); //guarda el sistema de coordenadas actual
+    translate(tx[i], ty[i]); //desplazar objetos dentro de la ventana de visualización
+    rotate(r[i]*radians(45));
+    fill(colorF[i]);
+    switch (i) {
+    case 0:
+    case 1:
+      scale(2.0);
+      triangle(-25, -50, -25, 50, 25, 0);
+      break;
+    case 2:
+    case 3:
+      scale(1.0);
+      triangle(-25, -50, -25, 50, 25, 0);
+      break;
+    case 4:
+      scale(1.5);
+      triangle(-25, -50, -25, 50, 25, 0);
+      break;
+    case 5:
+      scale(1.0);
+      beginShape();
+      vertex(75, -25);
+      vertex(-25, -25);
+      vertex(-75, 25);
+      vertex(25, 25);  
+      endShape();
+      break;
+    case 6:
+      scale(1.5);
+      rect(-25, -25, 50, 50);
+      break;
+    }
+    popMatrix();//restaura el sistema de coordenadas anterior
+  }
 }
 
 void mouseClicked() {
   if (mouseButton == RIGHT) {
     color mouseC = get (mouseX, mouseY);
-    if (colorC == mouseC) { 
-      rC= (rC+1);
-    }
-    if (colorT == mouseC) { 
-      rT= (rT+1);
-    }
-    if (colorP == mouseC) { 
-      rP= (rP+1);
+    for (int j=0; j<7; j++) {
+      if (colorF[j] == mouseC) { 
+        r[j]= r[j]+1;
+      }
     }
   }
 }
-
