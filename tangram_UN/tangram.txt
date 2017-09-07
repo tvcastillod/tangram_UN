@@ -54,6 +54,19 @@ void draw() {
   }
 }
 
+void mouseDragged(){
+  if (mouseButton == LEFT) {
+    color mouseC = get (mouseX, mouseY);
+    for (int j=0; j<7; j++) {
+      if (colorF[j] == mouseC) {
+        loadPixels();
+        tx[j] = mouseX;
+        ty[j] = mouseY; 
+      }
+    }
+  }
+}
+
 void mouseClicked() {
   if (mouseButton == RIGHT) {
     color mouseC = get (mouseX, mouseY);
