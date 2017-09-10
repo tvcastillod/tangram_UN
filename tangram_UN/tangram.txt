@@ -1,8 +1,13 @@
-int[] tx = new int[7];
-int[] ty = new int[7];
-int[] r = new int[7];
+float[] tx = new float[7];
+float[] ty = new float[7];
+float[] tz = new float[7];
+float[] r = new float[7];
 color[] colorF = new color[7];
+float colorS = 255;
 int i;
+int k = 1;
+boolean a = true; 
+PImage imgSol;
 
 void setup() {
   size(600, 600);
@@ -52,16 +57,31 @@ void draw() {
     }
     popMatrix();//restaura el sistema de coordenadas anterior
   }
+  if (mousePressed) {
+    tx[k] = mouseX;
+    ty[k] = mouseY;
+  }
+  noFill();
+  stroke(255);
+  strokeWeight(2);
+  rect(100, 100, 210, 210);
+  imgSol = loadImage("tangram_sol.jpg"); //carga la imagen de la solución del tangram en la variable imgSol de tipo PImage
+  image(imgSol, 400, 400, 100, 100);
+  if (!a) { 
+    noFill();
+  } 
+  if (a) { 
+    fill(255);
+  }
+  rect(400, 400, 100, 100);
 }
 
-void mouseDragged(){
+void mousePressed(){
   if (mouseButton == LEFT) {
     color mouseC = get (mouseX, mouseY);
     for (int j=0; j<7; j++) {
       if (colorF[j] == mouseC) {
-        loadPixels();
-        tx[j] = mouseX;
-        ty[j] = mouseY; 
+        k = j;
       }
     }
   }
@@ -75,5 +95,11 @@ void mouseClicked() {
         r[j]= r[j]+1;
       }
     }
+  }
+}
+
+void keyPressed() {
+  if (key == 'S' || key == 's') {
+    a = false; //deja ver la solución del tangram (imagen)
   }
 }
