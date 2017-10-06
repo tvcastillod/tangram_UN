@@ -31,7 +31,6 @@ abstract class Shape {
     text("Mover: mouse", 50, 750);
     text("Rotar: click derecho/ barra espaciadora", 50, 780);
     text("Desordenar: tecla R", 50, 810);
-    //text("Cambiar figura: tecla C", 50, 840);
     noStroke();
     pushStyle();
     pushMatrix();
@@ -98,20 +97,4 @@ abstract class Shape {
     colorF = c;
   }
   
-  public void setImage(){
-  
-   
-    for (int i=0;i<5;i++){
-    if (!a) { 
-        image(imgFig[i], 200, 750, 200, 200);
-    } 
-    if (a) { 
-      imgSol[0] = loadImage("Fig0_Sol.png");
-    //imgSol[1] = loadImage("Fig0_Sol.png");
-    //imgSol[2] = loadImage("Fig0_Sol.png");
-    //imgSol[3] = loadImage("Fig0_Sol.png");
-    //imgSol[4] = loadImage("Fig0_Sol.png");
-    }
-    }
-  }
 }

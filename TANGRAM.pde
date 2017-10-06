@@ -1,11 +1,6 @@
 Shape[] shapes = new Shape[7];
 boolean drawGrid = true;
 
-// TODO Implemente
-// 1. La manipulacion de las piezas con el mouse y el teclado
-// 2. La evaluacion de la solucion
-// 3. El modo de creacion de nuevos problemas
-
 void reset() {
   shapes[0] = new Rect();
   shapes[1] = new Tr1(); 
@@ -91,25 +86,3 @@ void mouseReleased() {
     shapes[i].k = -1;
   }
 }
-
-    
-  //  imgSol[0] = loadImage("Fig0.png");
-  //  imgSol[1] = loadImage("Fig1.png");
-  //  imgSol[2] = loadImage("Fig2.png");
-  //  imgSol[3] = loadImage("Fig3.png");
-  //  imgSol[4] = loadImage("Fig4.png");
-  //  imgFig[0] = loadImage("Fig0_Sol.png");
-  //  imgFig[1] = loadImage("Fig1_Sol.png");
-  //  imgFig[2] = loadImage("Fig2_Sol.png");
-  //  imgFig[3] = loadImage("Fig3_Sol.png");
-  //  imgFig[4] = loadImage("Fig4_Sol.png");
-    
-  //  for (int i=0;i<5;i++){
-  //  if (a==true) { 
-  //    image(imgFig[0], 500, 680, 200, 200);
-        
-  //  } 
-  //  if (a==false) { 
-  //    image(imgSol[0], 500, 680, 200, 200);
-  //  }
-  //}

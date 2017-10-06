@@ -19,6 +19,3 @@ class Rect extends Shape {
     edge = e;
   }
 }
-
-// https://www.openprocessing.org/sketch/428522
-// https://www.openprocessing.org/sketch/388282
