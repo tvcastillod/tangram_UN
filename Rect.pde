@@ -2,7 +2,7 @@ class Rect extends Shape {
   protected float edge;
 
   public Rect() {
-    setEdge(70);
+    setEdge(105);
   }
 
   @Override

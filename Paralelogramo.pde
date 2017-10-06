@@ -2,7 +2,7 @@ class Prl extends Shape {
  
   @Override
   protected void drawShape() {
-    scl = 1.0;
+    scl = 1.5;
     beginShape();
       vertex(75, -25);
       vertex(-25, -25);

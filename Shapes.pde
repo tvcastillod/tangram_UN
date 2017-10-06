@@ -4,6 +4,9 @@ abstract class Shape {
   protected color colorF;
   protected PVector trans;
   protected int k = -1;
+  boolean a = true; 
+  PImage imgFig[] = new PImage [5];
+  PImage imgSol[] = new PImage [5];
 
   // TODO: estilo
   // implemente el estilo del shape (i.e., stroke weight, color, etc)
@@ -12,7 +15,7 @@ abstract class Shape {
   // TODO: modifique o defina los constructores que necesite
 
   public Shape() {
-    this(random(100, width-100), random(100, height-100), 0, 1, color(random(30, 150), random(30, 150), random(30, 150)));
+    this(random(100, width-100), random(100, height-350), 0, 1, color(random(30, 150), random(30, 150), random(30, 150)));
   }
 
   public Shape(float x, float y, float r, float s, color c) {
@@ -23,6 +26,12 @@ abstract class Shape {
   }
 
   public void draw() {
+    textSize(20);
+    fill(0);
+    text("Mover: mouse", 50, 750);
+    text("Rotar: click derecho/ barra espaciadora", 50, 780);
+    text("Desordenar: tecla R", 50, 810);
+    //text("Cambiar figura: tecla C", 50, 840);
     noStroke();
     pushStyle();
     pushMatrix();
@@ -69,7 +78,7 @@ abstract class Shape {
   }
 
   public void setRotation(float r) {
-    rot = r*radians(45);
+    rot = r;
   }
 
   public PVector translation() {
@@ -88,5 +97,21 @@ abstract class Shape {
   public void setColor(color c) {
     colorF = c;
   }
-
+  
+  public void setImage(){
+  
+   
+    for (int i=0;i<5;i++){
+    if (!a) { 
+        image(imgFig[i], 200, 750, 200, 200);
+    } 
+    if (a) { 
+      imgSol[0] = loadImage("Fig0_Sol.png");
+    //imgSol[1] = loadImage("Fig0_Sol.png");
+    //imgSol[2] = loadImage("Fig0_Sol.png");
+    //imgSol[3] = loadImage("Fig0_Sol.png");
+    //imgSol[4] = loadImage("Fig0_Sol.png");
+    }
+    }
+  }
 }
