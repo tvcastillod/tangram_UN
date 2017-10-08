@@ -53,11 +53,6 @@ void keyPressed() {
   if (key == 'R'||key == 'r') {
     reset();
   }
-  for (int i=0; i<5; i++) {
-    if (key == 'S' || key == 's') {
-      shapes[i].a = false; //deja ver la solución del tangram (imagen)
-    }
-  }
 }
 
 void mouseClicked() {
