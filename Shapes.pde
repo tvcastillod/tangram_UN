@@ -4,12 +4,17 @@ abstract class Shape {
   protected color colorF;
   protected PVector trans;
   protected int k = -1;
+  public boolean[] a = new boolean[3]; 
+  protected PImage[] imgSol = new PImage[3];
 
   public Shape() {
-    this(random(100, width-100), random(100, height-350), 0, 1, color(random(30, 150), random(30, 150), random(30, 150)));
+    this(random(300, width-500), random(100, height-350), radians(45)*(int(random(1, 4))), 1, color(random(30, 150), random(30, 150), random(30, 150))); //definir valores
   }
 
   public Shape(float x, float y, float r, float s, color c) {
+    a[0]=true;
+    a[1]=true;
+    a[2]= true;
     trans = new PVector(x, y);
     rot = r;
     scl = s;
@@ -17,11 +22,6 @@ abstract class Shape {
   }
 
   public void draw() {
-    textSize(20);
-    fill(0);
-    text("Mover: mouse", 50, 750);
-    text("Rotar: click derecho/ barra espaciadora", 50, 780);
-    text("Desordenar: tecla R", 50, 810);
     noStroke();
     pushStyle();
     pushMatrix();
@@ -32,7 +32,7 @@ abstract class Shape {
     drawShape();
     popMatrix();
     popStyle();
-    if (k == -1) {
+    if (k != -1) {
       if (mousePressed) {
         trans.x = mouseX;
         trans.y = mouseY;
@@ -79,5 +79,4 @@ abstract class Shape {
   public void setColor(color c) {
     colorF = c;
   }
-  
 }
